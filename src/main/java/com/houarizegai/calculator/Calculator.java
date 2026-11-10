@@ -70,7 +70,7 @@ public class Calculator {
 
         btnMod = initBtn("%", x[2], y[1], e -> {
             repaintFont();
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText()))
                 if (go) {
                     val = calc(val, inText.getText(), opt);
                     inText.setText(format(val));
@@ -82,7 +82,7 @@ public class Calculator {
 
         btnDiv = initBtn("/", x[3], y[1], e -> {
             repaintFont();
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText()))
                 if (go) {
                     val = calc(val, inText.getText(), opt);
                     inText.setText(format(val));
@@ -124,7 +124,7 @@ public class Calculator {
         });
 
         btnEqual = initBtn("=", x[2], y[5], e -> {
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText()))
                 if (go) {
                     val = calc(val, inText.getText(), opt);
                     inText.setText(format(val));
@@ -135,7 +135,7 @@ public class Calculator {
         btnEqual.setSize(2 * BUTTON_WIDTH + 10, BUTTON_HEIGHT);
 
         btnRoot = initBtn("√", x[4], y[1], e -> {
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText())) {
                 val = Math.sqrt(Double.parseDouble(inText.getText()));
                 inText.setText(format(val));
                 opt = "√";
@@ -150,7 +150,7 @@ public class Calculator {
         btnPower.setVisible(false);
 
         btnLog = initBtn("ln", x[4], y[3], e -> {
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText())) {
                 val = Math.log(Double.parseDouble(inText.getText()));
                 inText.setText(format(val));
                 opt = "l";
@@ -206,7 +206,7 @@ public class Calculator {
     private JButton operatorBtn(String operator, int x, int y) {
         return initBtn(operator, x, y, e -> {
             repaintFont();
-            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+            if (Pattern.matches("[-]?\\d+(\\.\\d*)?", inText.getText()))
                 if (go) {
                     val = calc(val, inText.getText(), opt);
                     inText.setText(format(val));
