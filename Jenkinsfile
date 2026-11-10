@@ -9,7 +9,8 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                // Uses the absolute path to your Maven executable
+                bat '"C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.tasks.Maven_MavenInstallation\\Maven3\\bin\\mvn.cmd" clean package -DskipTests'
             }
         }
         stage('Archive Artifacts') {
